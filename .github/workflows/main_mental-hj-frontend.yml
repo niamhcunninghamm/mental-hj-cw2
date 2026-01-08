@@ -5,8 +5,7 @@ name: Build and deploy React app to Azure Web App - mental-hj-frontend
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -19,20 +18,17 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Node.js
-  uses: actions/setup-node@v4
-  with:
-    node-version: "20"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
       - name: Install dependencies
         working-directory: mhj-frontend
-        run: npm ci
+        run: npm install
 
       - name: Build
         working-directory: mhj-frontend
         run: npm run build
-
-      # Optional: keep tests if you want, but CRA tests can fail in CI unless configured.
-      # If tests are flaky, comment this step out.
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -58,5 +54,3 @@ jobs:
           slot-name: "Production"
           package: build
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0464C05E165A444696F6AEE4F727607F }}
-
-
