@@ -19,11 +19,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-          cache-dependency-path: mhj-frontend/package-lock.json
+  uses: actions/setup-node@v4
+  with:
+    node-version: "20"
 
       - name: Install dependencies
         working-directory: mhj-frontend
@@ -63,3 +61,4 @@ jobs:
           slot-name: "Production"
           package: build
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0464C05E165A444696F6AEE4F727607F }}
+
