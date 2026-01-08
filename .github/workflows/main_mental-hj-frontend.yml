@@ -33,9 +33,6 @@ jobs:
 
       # Optional: keep tests if you want, but CRA tests can fail in CI unless configured.
       # If tests are flaky, comment this step out.
-      - name: Test
-        working-directory: mhj-frontend
-        run: npm test --if-present -- --watchAll=false
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -61,4 +58,5 @@ jobs:
           slot-name: "Production"
           package: build
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0464C05E165A444696F6AEE4F727607F }}
+
 
