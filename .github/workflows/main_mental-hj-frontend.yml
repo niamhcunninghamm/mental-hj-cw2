@@ -23,18 +23,16 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        working-directory: mhj-frontend
         run: npm install
 
       - name: Build
-        working-directory: mhj-frontend
         run: npm run build
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: react-build
-          path: mhj-frontend/build
+          path: build
 
   deploy:
     runs-on: ubuntu-latest
